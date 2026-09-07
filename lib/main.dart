@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
 
 void main() {
-  runApp(const AiVideoApp());
+  runApp(const MyApp());
 }
 
-class AiVideoApp extends StatelessWidget {
-  const AiVideoApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AI Video Generator',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        useMaterial3: true,
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('يشتغل!', style: TextStyle(fontSize: 30)),
+        ),
       ),
-      home: const HomeScreen(),
     );
   }
 }
