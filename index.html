@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مِرآة — فيديوهات تعليمية ومجتمعية من كلماتك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141F33;
+    --bg-deep:#0F1828;
+    --surface:#1D2E4B;
+    --surface-2:#243a5e;
+    --line: rgba(232,163,61,0.18);
+    --gold:#E8A33D;
+    --gold-soft:#F0C27A;
+    --sage:#6FA88F;
+    --text:#F2EFE7;
+    --text-muted:#9FAEC4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    background-image:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(232,163,61,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at -10% 30%, rgba(111,168,143,0.08), transparent 55%);
+    color:var(--text);
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    line-height:1.7;
+  }
+  h1,h2,h3{
+    font-family:'Markazi Text', serif;
+    font-weight:700;
+    margin:0;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+  header.top{
+    padding:26px 0 10px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Markazi Text', serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--gold-soft);
+  }
+  .brand .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 12px 2px rgba(232,163,61,0.55);
+  }
+
+  .hero{
+    padding:38px 0 8px;
+  }
+  .hero h1{
+    font-size:2.5rem;
+    line-height:1.28;
+    color:var(--text);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold-soft);
+  }
+  .hero p.lede{
+    color:var(--text-muted);
+    font-size:1.08rem;
+    max-width:52ch;
+    margin-top:14px;
+  }
+
+  /* the tool itself, front and center */
+  .tool{
+    margin-top:34px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px;
+  }
+  .tool label{
+    display:block;
+    font-size:0.98rem;
+    color:var(--gold-soft);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+  .tool textarea{
+    width:100%;
+    min-height:120px;
+    resize:vertical;
+    background:var(--bg-deep);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    color:var(--text);
+    font-family:inherit;
+    font-size:1rem;
+    padding:14px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .tool textarea:focus{
+    border-color:var(--gold);
+  }
+  .tool .counter{
+    text-align:left;
+    font-size:0.8rem;
+    color:var(--text-muted);
+    margin-top:6px;
+  }
+
+  .service-picker{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .service-chip{
+    border:1px solid var(--line);
+    background:var(--bg-deep);
+    color:var(--text-muted);
+    padding:9px 16px;
+    border-radius:999px;
+    font-size:0.92rem;
+    cursor:pointer;
+    font-family:inherit;
+    transition:all .15s ease;
+  }
+  .service-chip.active{
+    background:var(--gold);
+    color:#241505;
+    border-color:var(--gold);
+    font-weight:600;
+  }
+
+  .go-btn{
+    margin-top:20px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:var(--gold);
+    color:#241505;
+    font-family:inherit;
+    font-size:1.08rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform .1s ease, background .15s ease;
+  }
+  .go-btn:active{ transform:scale(0.985); }
+  .go-btn:hover{ background:var(--gold-soft); }
+
+  .copy-note{
+    margin-top:12px;
+    font-size:0.86rem;
+    color:var(--text-muted);
+    text-align:center;
+  }
+  .copy-note.show{ color:var(--sage); }
+
+  /* tips section — a real sequence, so numbering is justified */
+  .tips{
+    margin-top:56px;
+  }
+  .tips h2{
+    font-size:1.7rem;
+    color:var(--text);
+  }
+  .tips p.sub{
+    color:var(--text-muted);
+    margin-top:8px;
+    max-width:56ch;
+  }
+  .tip-list{
+    margin-top:22px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .tip{
+    display:flex;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .tip:last-child{ border-bottom:1px solid var(--line); }
+  .tip .n{
+    font-family:'Markazi Text', serif;
+    font-size:1.6rem;
+    font-weight:700;
+    color:var(--gold);
+    min-width:34px;
+  }
+  .tip .t h3{
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    font-size:1.03rem;
+    font-weight:600;
+    color:var(--text);
+  }
+  .tip .t p{
+    color:var(--text-muted);
+    margin:6px 0 0;
+    font-size:0.95rem;
+  }
+
+  /* honesty section about free-tier limits */
+  .honesty{
+    margin-top:48px;
+    background:var(--surface-2);
+    border-radius:16px;
+    padding:20px 22px;
+    border:1px solid var(--line);
+  }
+  .honesty h3{
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    font-size:1rem;
+    color:var(--sage);
+    font-weight:700;
+  }
+  .honesty p{
+    color:var(--text-muted);
+    font-size:0.93rem;
+    margin:10px 0 0;
+  }
+
+  footer{
+    margin-top:60px;
+    padding:26px 0 40px;
+    border-top:1px solid var(--line);
+    color:var(--text-muted);
+    font-size:0.85rem;
+    text-align:center;
+  }
+
+  @media (max-width:480px){
+    .hero h1{ font-size:2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand"><span class="dot"></span> مِرآة</div>
+  </header>
+
+  <section class="hero">
+    <h1>اكتب فكرتك، وخلّها <em>فيديو</em> يوصل للناس</h1>
+    <p class="lede">أداة بسيطة تساعدك تجهّز نص فيديو تعليمي أو مجتمعي قصير، وتوديك مباشرة لخدمة توليد فيديو بالذكاء الاصطناعي مجانية لتحويله.</p>
+  </section>
+
+  <section class="tool">
+    <label for="script">وصف الفيديو أو النص</label>
+    <textarea id="script" placeholder="مثال: فيديو قصير يشرح لأطفال الحي أهمية غسل الأيدي قبل الأكل، بأسلوب بسيط ومشجّع..."></textarea>
+    <div class="counter"><span id="charCount">0</span> حرف</div>
+
+    <div class="service-picker" id="servicePicker">
+      <button class="service-chip active" data-url="https://upsampler.com/free-video-generator-no-signup">Upsampler</button>
+      <button class="service-chip" data-url="https://vivideo.ai/">Vivideo</button>
+      <button class="service-chip" data-url="https://magichour.ai/products/text-to-video">Magic Hour</button>
+    </div>
+
+    <button class="go-btn" id="goBtn">انسخ النص وافتح أداة التوليد</button>
+    <div class="copy-note" id="copyNote">تم نسخ النص — الصقه داخل الأداة بعد ما تفتح</div>
+  </section>
+
+  <section class="tips">
+    <h2>كيف تكتب فكرة فيديو ناجحة</h2>
+    <p class="sub">الفيديوهات التعليمية والمجتمعية القصيرة تنجح لما تكون واضحة ومباشرة. خمس خطوات تساعدك:</p>
+
+    <div class="tip-list">
+      <div class="tip">
+        <div class="n">١</div>
+        <div class="t">
+          <h3>حدّد فكرة وحدة بس</h3>
+          <p>فيديو قصير يقدر يوصل فكرة وحدة بوضوح، مو خمس أفكار متزاحمة.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="n">٢</div>
+        <div class="t">
+          <h3>اكتب بلغة اللي راح يشوفه</h3>
+          <p>لو الجمهور أطفال أو كبار سن، استخدم كلمات بسيطة وجمل قصيرة بدل مصطلحات معقدة.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="n">٣</div>
+        <div class="t">
+          <h3>صف المشهد بصرياً</h3>
+          <p>بدل "اشرح غسل الأيدي"، اكتب "طفل يغسل يديه تحت صنبور ماء والصابون يكوّن رغوة" — التفاصيل البصرية تعطي نتيجة أدق.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="n">٤</div>
+        <div class="t">
+          <h3>خليه قصير من البداية</h3>
+          <p>15-30 ثانية كافية لفكرة وحدة واضحة، وأغلب الأدوات المجانية أصلاً محدودة بمدة قصيرة.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="n">٥</div>
+        <div class="t">
+          <h3>جرّب أكثر من مرة</h3>
+          <p>أول نتيجة نادراً تكون الأفضل — عدّل الوصف وجرّب صياغات مختلفة حتى توصل لنتيجة تناسبك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="honesty">
+    <h3>ملاحظة مهمة وصريحة</h3>
+    <p>هذي الخدمات مجانية بحدود يومية (عدد فيديوهات محدود، مدة قصيرة)، وشروطها تتغير من وقت لوقت. الأداة هنا بوابة توصلك لأفضل خيار متاح حالياً، مو توليد داخلي — لأنه ما فيه أي خدمة توليد فيديو مجانية بالكامل بدون قيود حتى الآن.</p>
+  </section>
+
+  <footer>
+    مِرآة — أداة شخصية لتحويل الأفكار إلى فيديو
+  </footer>
+
+</div>
+
+<script>
+  const textarea = document.getElementById('script');
+  const charCount = document.getElementById('charCount');
+  const chips = document.querySelectorAll('.service-chip');
+  const goBtn = document.getElementById('goBtn');
+  const copyNote = document.getElementById('copyNote');
+
+  let selectedUrl = document.querySelector('.service-chip.active').dataset.url;
+
+  textarea.addEventListener('input', () => {
+    charCount.textContent = textarea.value.length;
+  });
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      selectedUrl = chip.dataset.url;
+    });
+  });
+
+  goBtn.addEventListener('click', async () => {
+    const text = textarea.value.trim();
+    if(text.length > 0){
+      try{
+        await navigator.clipboard.writeText(text);
+        copyNote.classList.add('show');
+        copyNote.textContent = 'تم نسخ النص — الصقه داخل الأداة بعد ما تفتح';
+      }catch(e){
+        copyNote.textContent = 'افتح الأداة والصق النص يدوياً (انسخه من الأعلى)';
+      }
+    }
+    window.open(selectedUrl, '_blank');
+  });
+</script>
+
+</body>
+</html>
